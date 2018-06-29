@@ -1,0 +1,295 @@
+local libcode = [[
+--MenuAPI functions (mprint, drawBootMenu) by 1Ridav and MelnikovSM
+--Context menu provided generously by MasonCipher
+local function mprint(array, this, s1, s2, x, y)
+   local c = term.getTextColor()
+   term.setTextColor(colors.lightGray)
+   for i = 1, #array do
+      term.setCursorPos(x, y)
+      --Check if option selected
+      if i == this then 
+      --Option selected   
+         write(s1)
+      else 
+      --Option NOT selected
+         write(s2)
+      end
+      --Print the string
+      print(array[i])
+      y = y + 1 
+   end
+   term.setTextColor(c)
+end
+
+local function stdoutg(text, bg, fg)
+ local a = term.getBackgroundColor()
+ local b = term.getTextColor()
+ term.setBackgroundColor(bg or colors.black)
+ term.setTextColor(fg or colors.white)
+ write(text)
+ term.setBackgroundColor(a)
+ term.setTextColor(b)
+end
+
+function clearScreen(color)
+ term.setBackgroundColor(color or colors.black)
+ term.clear()
+ term.setCursorPos(1,1)
+end
+
+function button(text, x1, x2, y)
+ term.setCursorPos(x1, y)
+ print(text)
+ local a, b, xx, yy = os.pullEvent("mouse_click")
+ if (xx >= x1 and xx <= x2 and yy == y) then
+  return true
+ else
+  return false
+ end
+end
+
+function counter(text, y)
+ for i=1,100 do
+  sleep(0.1)
+  term.setCursorPos(1, y)
+  print(text.." ["..tostring(i).."%]")
+ end
+end
+
+function drawProgress(txt, y)
+ term.setCursorPos(4, 4)
+ print(txt)
+ term.setCursorPos(1, y)
+ print("[                             ]")
+ term.setCursorPos(2, y)
+ textutils.slowPrint("==============================]", 10)
+end
+
+function drawProgressBig(color)
+ term.setCursorPos(4, 10)
+ print("\#-------------------------------------------\#")
+ term.setCursorPos(4, 11)
+ print("|                                           |")
+ term.setCursorPos(4, 12)
+ print("\#-------------------------------------------\#")
+ term.setBackgroundColor(color or colors.yellow)
+ term.setCursorPos(5, 11)
+ textutils.slowWrite("                                           ", 10)
+ term.setBackgroundColor(colors.black)
+end
+
+function printColoredTextLine(y, txt, bg, fg)
+ term.setCursorPos(1, y)
+ term.setBackgroundColor(bg or colors.lightGray)
+ term.write("                                                   ")
+ term.setCursorPos(1, y)
+ term.setTextColor(fg or colors.black)
+ print(txt)
+ term.setBackgroundColor(colors.black)
+ term.setTextColor(colors.white)
+end
+
+function outputInfo(header, msg)
+ term.setTextColor(colors.cyan)
+ write(header..": ")
+ term.setTextColor(colors.lightGray)
+ print(msg)
+ term.setTextColor(colors.white)
+end
+
+function outputWarning(header, msg)
+ term.setTextColor(colors.red)
+ write(header..": ")
+ term.setTextColor(colors.orange)
+ print(msg)
+ term.setTextColor(colors.white)
+end
+
+function outputSuccess(header, msg)
+ term.setTextColor(colors.lime)
+ write(header..": ")
+ term.setTextColor(colors.green)
+ print(msg)
+ term.setTextColor(colors.white)
+end
+
+function request(req)
+ while true do
+  term.setTextColor(colors.cyan)
+  write(req .. "? ")
+  term.setTextColor(colors.lightGray)
+  write("(")
+  term.setTextColor(colors.lime)
+  write("Y")
+  term.setTextColor(colors.lightGray)
+  write("/")
+  term.setTextColor(colors.red)
+  write("N")
+  term.setTextColor(colors.lightGray)
+  write(") ")
+  local presel=read()
+  if presel=="Y" or presel=="y" then
+   return true
+  elseif presel=="N" or presel=="n" then
+   return false
+  end
+ end
+end
+
+function drawImg(path, x, y)
+ if fs.exists(path) and not fs.isDir(path) then
+  local img = paintutils.loadImage(path)
+  paintutils.drawImage(img, x, y)
+ else
+  gui.outputWarning("gui", "image not found")
+ end
+end
+
+function drawDialogBox(prompt)
+ drawImg("/system/res/dialog_box.img", 1, 1)
+ term.setCursorPos(6,7)
+ term.setBackgroundColor(colors.white)
+ term.setTextColor(colors.black)
+ print(prompt)
+end
+
+function drawDialogButton(text, newline)
+ stdoutg(text, colors.gray, colors.white)
+ if newline then
+  stdoutg("\n", colors.gray, colors.white)
+ else
+  stdoutg(" ", colors.gray, colors.white)
+ end
+end
+
+function printColored(text, color)
+ local tmp = term.getTextColor()
+ term.setTextColor(color)
+ print(text)
+ term.setTextColor(tmp)
+end
+
+function drawBootMenu(array, state1, state2, pos_x, pos_y)
+   local select = 1
+   local x, y = term.getCursorPos()
+   
+   while true do
+      term.setCursorPos(x, y)
+      mprint(array, select, state1, state2, pos_x, pos_y)
+      event, key = os.pullEvent("key")
+      --Enter
+      if key == 28 then 
+         return select 
+      end
+      
+      if #array > 1 then
+         --Arrow UP or W key
+         if key == 200 or key == 17 then 
+      		    select = select - 1 
+			
+            if select < 1 then 
+               select = #array 
+            end
+         --Arrow Down or S key
+         elseif key == 208 or key == 31 then 
+      		    select = select + 1     
+        			 if select > #array then select = 1 end
+  	      end
+      end   
+   end
+end
+
+function drawContextMenu(...)
+  if #arg < 3 or type(arg[3]) ~= "table" then error("Usage: menu(number x,number y,table Element1,table Element2, table Element3...) \nReturns: string Action \n<Element> structure: {string Name[, boolean isElementHidden][,number colorOfText]}") end
+  local xSize, ySize = term.getSize()
+   
+  local function text(x,y,text1,color)
+    term.setTextColor(color)
+    term.setCursorPos(x,y)
+    term.write(text1)
+  end
+   
+  local Objects = {}
+  local function newObj(name,isHidden,xStart,xEnd,y)
+    Objects[name]={}
+    Objects[name]["isHidden"] = isHidden
+    Objects[name]["xStart"] = xStart
+    Objects[name]["xEnd"] = xEnd
+    Objects[name]["y"] = y
+  end
+       
+  local theLongestElement = #arg[3][1]
+  for i=3,#arg do
+    if arg[i] ~= "-" and theLongestElement < #arg[i][1] then
+      theLongestElement = #arg[i][1]
+    end
+  end
+   
+  local xSizeOfMenu = theLongestElement + 4
+  local ySizeOfMenu = #arg-2
+ 
+  local xStartToDisplay = nil
+  local yStartToDisplay = nil
+     
+  local function square(x1,y1,width,height,color)
+    local string = string.rep(" ",width)
+    term.setBackgroundColor(color)
+    for y=y1,(y1+height-1) do
+      term.setCursorPos(x1,y)
+      term.write(string)
+    end
+  end
+  
+  local function drawSeparator(x,y,size)
+    term.setTextColor(colors.lightGray)
+    term.setCursorPos(x,y)
+    term.write(string.rep("-",size))
+  end
+  
+  local function drawMenu(xMenu,yMenu)
+    if yMenu+ySizeOfMenu - 1  >= ySize then yMenu = yMenu - (yMenu+ySizeOfMenu - 1 - ySize) - 1 end
+    if xMenu+xSizeOfMenu - 1  >= xSize then xMenu = xMenu - (xMenu+xSizeOfMenu - 1 - xSize) - 1 end
+    xStartToDisplay = xMenu + 2
+    yStartToDisplay = yMenu
+    square(xMenu+1,yMenu+1,xSizeOfMenu,ySizeOfMenu,colors.gray)
+    square(xMenu,yMenu,xSizeOfMenu,ySizeOfMenu,colors.white)
+    for i=3,#arg do
+      if arg[i] ~= "-" then
+        local contextColor = colors.black
+        if arg[i][2] == nil and arg[i][3] == nil then
+          contextColor = colors.black
+        elseif arg[i][2] == false and arg[i][3] == nil then
+          contextColor = colors.black
+        elseif arg[i][2] == false and arg[i][3] ~= nil then
+          contextColor = arg[i][3]
+        elseif arg[i][2] == true then
+          contextColor = colors.lightGray
+        end
+        text(xStartToDisplay,yStartToDisplay+i-3,arg[i][1],contextColor)
+        newObj(arg[i][1],arg[i][2],xMenu,xMenu+xSizeOfMenu-1,yStartToDisplay+i-3)
+      else
+        drawSeparator(xMenu,yStartToDisplay+i-3,xSizeOfMenu)
+      end
+    end
+  end
+  drawMenu(arg[1],arg[2])
+  local event,side,xClick,yClick = os.pullEvent()
+  if event == "monitor_touch" then side = 1 end
+  if event == "mouse_click" or event == "monitor_touch" then
+    for key,val in pairs(Objects) do
+      if xClick >= Objects[key]["xStart"] and xClick <= Objects[key]["xEnd"] and yClick == Objects[key]["y"] and Objects[key]["isHidden"] == false or xClick >= Objects[key]["xStart"] and xClick <= Objects[key]["xEnd"] and yClick == Objects[key]["y"] and Objects[key]["isHidden"] == nil then
+        for i=Objects[key]["xStart"],Objects[key]["xEnd"] do
+          paintutils.drawPixel(i,Objects[key]["y"],colors.blue)
+        end
+        text(xStartToDisplay,Objects[key]["y"],key,colors.white)
+        sleep(0.3)
+        return key
+      end
+    end
+  end
+end
+]]
+
+syscall(0x00000004, "UI", libcode)
+
+return 1
