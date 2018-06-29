@@ -1,0 +1,39 @@
+-- Driver for Darwin mouse input handling
+
+local function handleRegionMouseInput(xx, yy, x1, x2, y1, y2)
+ y0 = y2 or y1
+ if (xx >= x1 and xx <= x2) then
+  if (yy >= y1 and yy <= y0) then
+   return true
+  elseif yy == y1 or yy == y0 then
+   return true
+  end
+ end
+ return false
+end
+
+__declare_api("peripheral", "handleMouseInput", function(...)
+ local tArgs = {...}
+ if #tArgs < 1 then
+  error("usage: handleMouseInput(<table describing the minX, maxX, minY and maxY positions of a button>, [more tables like this]")
+ else
+  while true do
+   sleep(0.01)
+   local a, b, x, y = os.pullEvent("mouse_click")
+   sleep(0.01)
+   for k,v in ipairs(tArgs) do
+    local minX = v[1]
+	local maxX = v[2]
+	local minY = v[3]
+	local maxY = v[4] or v[3]
+    if handleRegionMouseInput(x, y, minX, maxX, minY, maxY) then
+     return k
+    end
+   end
+  end
+ end
+end)
+
+return 1
+
+

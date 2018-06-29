@@ -1,0 +1,9 @@
+GUI.Controller.spaceColor = colors.cyan
+GUI.Controller.multiWindow = true
+local w, h = term.getSize()
+local window = GUI.Window:new({w = w - 5; h = h - 5; draggable = true; hasShadow = true; bgColor = colors.white; tlColor = colors.lightGray; shadowColor = colors.gray;})
+GUI.Controller:addWindow(window)
+window:addComponent(GUI.Button:new({x = 1; y = 1; w = 1; h = 1; action = (function(self) self.parent:close() end); textColor = colors.white; bgColor = window.tlColor; text = "x";}))
+GUI.Controller:addComponent(GUI.Label:new({x = 1; y = 9; w = w; text = "GUI Windows!"; textColor = colors.white; bgColor = colors.lightBlue;}))
+GUI.Controller:addWindow(GUI.Controller:cloneComponent(window))
+GUI.Controller:startUpdateCycle()

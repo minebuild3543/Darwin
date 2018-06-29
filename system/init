@@ -1,0 +1,18 @@
+local function annotateLoading(txt, array, delay)
+ for _, v in ipairs(array) do
+  UI.printColoredTextLine(18, txt..v, colors.blue, colors.white)
+  sleep(delay or 1.5)
+ end
+end
+if not __DEBUG then
+ local setupLines = {}
+ setupLines.stageOne = {"[1/5] Loading device drivers", "[2/5] Loading standard libraries", "[3/5] Loading security routines", "[4/5] Getting configuration", "[5/5] Entering user mode"}
+ UI.clearScreen(colors.white)
+ UI.drawImg("/system/res/orbital.img", 1, 1)
+ UI.printColoredTextLine(18, "Tesseract boot sequence in progress...", colors.blue, colors.white)
+ sleep(2)
+ annotateLoading("Booting Orbital: ", setupLines.stageOne, 1.25)
+ sleep(2)
+end
+sleep(0.25)
+UI.clearScreen()

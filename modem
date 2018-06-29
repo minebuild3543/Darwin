@@ -1,0 +1,55 @@
+local mArgs = {...}
+local help = "modem <open/close/status/help>"
+
+function autoOpen()
+ for _, v in pairs(rs.getSides()) do
+  if peripheral.isPresent(v) and peripheral.getType(v) == "modem" then
+   if not rednet.isOpen(v) then
+    rednet.open(v)
+    print("Modem opened on "..v.." side")
+   else
+    printError("Modem on "..v.." side already open")
+   end
+  end
+ end
+end
+
+function autoClose()
+ for _, v in pairs(rs.getSides()) do
+  if peripheral.isPresent(v) and peripheral.getType(v) == "modem" then
+   if rednet.isOpen(v) then
+    rednet.close(v)
+    print("Modem closed on "..v.." side")
+   else
+    printError("Modem on "..v.." side already closed")
+   end
+  end
+ end
+end
+
+function list()
+ for _, v in pairs(rs.getSides()) do
+  if peripheral.isPresent(v) and peripheral.getType(v) == "modem" then
+   print("Modem detected on "..v.." side")
+   if rednet.isOpen(v) then
+    print("Modem is open")
+   elseif not rednet.isOpen(v) then
+    print("Modem is closed")
+   end
+  end
+ end
+end
+
+if #mArgs < 1 then
+ print(help)
+else
+ if mArgs[1] == "open" then
+  autoOpen()
+ elseif mArgs[1] == "close" then
+  autoClose()
+ elseif mArgs[1] == "status" then
+  list()
+ elseif mArgs[1] == "help" then
+  print(help)
+ end
+end

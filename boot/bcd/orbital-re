@@ -1,0 +1,53 @@
+local function boot_printColoredTextLine(y, txt, bg, fg)
+ term.setCursorPos(1, y)
+ term.setBackgroundColor(bg or colors.lightGray)
+ term.write("                                                   ")
+ term.setCursorPos(1, y)
+ term.setTextColor(fg or colors.black)
+ print(txt)
+ term.setBackgroundColor(colors.black)
+ term.setTextColor(colors.white)
+end
+
+local function recovery_drawProgressBar()
+    local bgColor = term.getBackgroundColor()
+	local textColor = term.getTextColor()
+    --term.clear()
+	term.setCursorPos(13,4)
+	term.setTextColor(colors.lightGray)
+	print("Orbital is loading files...")
+	term.setTextColor(textColor)
+	term.setBackgroundColor(colors.lightGray)
+    term.setCursorPos(4,6)
+	textutils.slowPrint("                                             ", 10)
+	term.setBackgroundColor(bgColor)
+end
+
+local function recovery_drawScreen(opt)
+    term.setBackgroundColor(colors.black)
+    term.clear()
+    term.setCursorPos(1,1)
+    boot_printColoredTextLine(2, "             Orbital Boot Manager v1.0             ", colors.lightGray, colors.black)
+	if not opt then
+        boot_printColoredTextLine(18, " ARROW KEYS=Choose                      ENTER=Boot ", colors.lightGray, colors.black)
+	else
+        boot_printColoredTextLine(18, "                                                   ", colors.lightGray, colors.black)
+	end
+end
+
+local function recovery_annotate()
+    local annotate = {"   Fetching Orbital RE image...", "   Unpacking image...", "   Execute: /boot/recovery/drivers.pkg", "   Execute: /boot/recovery/libraries.pkg", "   Execute: /boot/recovery/initrd"}
+	local textColorA = term.getTextColor()
+	term.setCursorPos(1,8)
+	term.setTextColor(colors.lightGray)
+	for _,v in ipairs(annotate) do
+	    print(v)
+		sleep(0.5)
+	end
+	term.setTextColor(textColorA)
+end
+
+recovery_drawScreen(true)
+recovery_drawProgressBar()
+recovery_annotate()
+sleep(5)

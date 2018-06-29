@@ -1,0 +1,4 @@
+os.loadAPI("/libmenu")
+libmenu.drawMenu("Test menu", {"1", "2", "3"})
+os.loadAPI("/libminimenu")
+libminimenu.minimenu("test", "test", 'test')

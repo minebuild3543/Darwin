@@ -1,0 +1,4 @@
+dofile("/boot/kernel")
+shell.setPath(shell.path()..":/system/bin")
+shell.run("/boot/security.map")
+shell.run("/system/bin/sh")

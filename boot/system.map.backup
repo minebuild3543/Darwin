@@ -1,0 +1,59 @@
+-- kernel symbol table
+local sct = {}
+
+-- hardware syscalls
+
+-- syscall 0: shutdown system
+sct[0x00000000] = os.shutdown
+
+-- syscall 1: reboot system
+sct[0x00000001] = os.reboot
+
+-- syscall 2: initialize device
+sct[0x00000002] = function(t)
+ local x = nil
+ for i,v in pairs(DEVICE_ID) do
+  if t == v then
+   x = 1
+  end
+ end
+ if x == 1 then
+  return peripheral.find(t)
+ else
+  return nil
+ end
+end
+
+-- kernel-mode syscalls
+
+-- syscall 3: execute raw Lua code
+sct[0x00000003] = function(ap)
+ return os.run(getfenv(1), ap)
+end
+
+-- syscall 4: load code into memory
+sct[0x00000004] = function(n, c)
+ local h = fs.open("/tmp/"..n, "w")
+ h.writeLine(c)
+ h.close()
+ os.loadAPI("/tmp/"..n)
+ fs.delete("/tmp/"..n)
+end
+
+-- syscall 5: open file descriptor
+sct[0x00000005] = function(p, t)
+ local af = {"r", "rb", "w", "wb", "a", "ab"}
+ local x = nil
+ for _,v in ipairs(af) do
+  if t == v then
+   x = 1
+  end
+ end
+ if x == 1 then
+  return fs.open(p, t)
+ else
+  return nil
+ end
+end
+
+return sct

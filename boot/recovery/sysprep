@@ -1,0 +1,36 @@
+-- Darwin OOBE executable
+
+local tArgs = {...}
+
+if not settings then
+ if not __RECOVERY_SILENT and not tArgs[1] == "--silent" then
+  print("[ ! ] Settings API not found")
+  print("[ * ] Installing Settings API")
+ end
+ response = http.get("https://pastebin.com/raw/sULc26Yp")
+ x = fs.open("/lib/libstdlua_settings.1.so", "w")
+ x.writeLine(response.readAll())
+ x.close()
+ response.close()
+ x = fs.open("/boot/drivers/legacy.kext", "w")
+ x.writeLine("return 1")
+ x.close()
+end
+
+if settings then
+ -- Change default extensions
+ settings.set("edit.default_extension", "")
+ settings.set("paint.default_extension", "img")
+ -- Disable autocompletion
+ settings.set("shell.autocomplete", false)
+ settings.set("lua.autocomplete", false)
+ settings.set("edit.autocomplete", false)
+ -- Disable removable device override
+ -- so that /startup gets control and handles all boot events
+ settings.set("shell.allow_disk_startup", false)
+ settings.set("shell.allow_startup", true)
+ -- Save settings
+ settings.save("/.settings")
+end
+
+if not __RECOVERY_SILENT and not tArgs[1] == "--silent" then print("[ v ] OOBE settings applied.") end

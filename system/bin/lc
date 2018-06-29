@@ -1,0 +1,31 @@
+-- Lua compiler for the Orbital SDK
+-- Takes the input file and converts it to Lua bytecode
+
+local oex_template = "!LC!\\|/%s\\|/%s"
+
+local function compileFile(p)
+ local func, err = loadstring(stdlib.readFile(p))
+ if func ~= nil then
+  local h = syscall(0x5, p..".bin", fs.AF_WRITE)
+  h.write(string.dump(func))
+  h.close()
+  return true
+ else
+  return false
+ end
+end
+
+local tArgs = {...}
+
+if #tArgs >= 1 then
+ path = shell.resolve(tArgs[1])
+ if not fs.exists(path) or fs.isDir(path) then
+  UI.outputInfo("lc", "file does not exist")
+ else
+  UI.outputInfo("lc", "compiling to bytecode")
+  compileFile(path)
+ end
+else
+ UI.outputInfo("lc", "lc <input file> [format]")
+end
+

@@ -1,0 +1,16 @@
+local tArgs = {...}
+
+if #tArgs >= 1 then
+ path = shell.resolve(tArgs[1])
+ if fs.isReadOnly(path) then
+  --return
+ end
+ if not fs.exists(path) or fs.isDir(path) then
+  UI.outputInfo("cat", "file does not exist")
+ else
+  textutils.pagedPrint(stdlib.readFile(path))
+ end
+else
+ UI.outputInfo("cat", "filename not specified")
+end
+

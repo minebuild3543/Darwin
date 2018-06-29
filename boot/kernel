@@ -1,0 +1,70 @@
+-- Darwin alpha 0.0.2.5
+
+term.clear()
+term.setCursorPos(1,1)
+
+os.version = function()
+ return "Orbital 0.0.2.7 Developer Preview"
+end
+
+-- initialize kernel-mode functions
+if not dofile("/boot/kernel.map") then
+ printError("[ X ] Failed to initialize kernel library")
+ if __DEBUG then
+  return 0
+ else
+  while true do
+   coroutine.yield()
+  end
+ end
+end
+
+__declare("__DEBUG", __kstruct({true}))
+
+if not settings and not dofile("/boot/ext/legacy.kext") then
+ return __kstop(0x00000003, "CC 1.8 is required for Orbital to run")
+end
+
+local secmc = __kchecksum(__kread("/boot/security.map"))
+local sysmc = __kchecksum(__kread("/boot/system.map"))
+
+--if secmc ~= 517773896 then
+ --return __kstop(0x00000001, "/boot/security.map", secmc, 517773896)
+--end
+
+if sysmc ~= 3858162460 then
+ return __kstop(0x00000001, "/boot/system.map", sysmc, 3858162460)
+end
+
+-- syscall pointer table
+__declare("syscalls", {})
+_G["syscalls"]["shutdown"] = 0x00000000
+_G["syscalls"]["reboot"] = 0x00000001
+_G["syscalls"]["device_init"] = 0x00000002
+
+-- syscall wrapper
+__declare("syscall", function(sc, ...)
+ return dofile("/boot/system.map")[sc](...)
+end)
+
+-- load drivers and libraries
+__kload("/boot/ext/mouse.kext")
+__kload("/lib/libstdlua.2.so")
+__kload("/lib/libuser.2.so")
+__kload("/lib/libgui_txui.1.so")
+if not settings then
+ __kload("/lib/libstdlua_settings.1.so")
+end
+
+-- finalize kernel-mode init
+__kfinalize()
+
+-- output
+printk(1, "Darwin kernel loaded")
+
+sleep(5)
+
+term.clear()
+term.setCursorPos(1,1)
+
+dofile("/system/init")

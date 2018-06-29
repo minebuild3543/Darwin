@@ -1,0 +1,13 @@
+local tArgs = {...}
+local sz = fs.getSize(shell.dir())
+local fspc = fs.getFreeSpace(shell.dir())
+
+UI.outputInfo("type", fs.getDrive(shell.dir()))
+if stdlib.findValue(tArgs, "-sB") then
+ UI.outputInfo("size", tostring(sz).." B")
+ UI.outputInfo("free space", tostring(fspc).." B")
+elseif stdlib.findValue(tArgs, "-sKB") then
+ UI.outputInfo("size", tostring(sz/1024).." KB")
+ UI.outputInfo("free space", tostring(fspc/1024).." KB")
+end
+

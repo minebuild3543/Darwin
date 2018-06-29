@@ -1,0 +1,273 @@
+1d:9:46 | Attempt to access system files!
+1d:9:46 | Superuser access verified.
+1d:10:20 | Attempt to access system files!
+1d:10:20 | Superuser access verified.
+1d:6:03 | Loaded system file: /boot/drivers/mouse.sys
+1d:6:04 | Loaded system file: /lib/libstdlua.2.so
+1d:6:04 | Loaded system file: /lib/libuser.2.so
+1d:6:04 | Loaded system file: /lib/libgui_txui.1.so
+1d:6:04 | Darwin kernel loaded
+1d:6:21 | Loaded system file: /boot/drivers/mouse.sys
+1d:6:22 | Loaded system file: /lib/libstdlua.2.so
+1d:6:22 | Loaded system file: /lib/libuser.2.so
+1d:6:22 | Loaded system file: /lib/libgui_txui.1.so
+1d:6:22 | Darwin kernel loaded
+1d:7:07 | Loaded system file: /boot/drivers/mouse.sys
+1d:7:08 | Loaded system file: /lib/libstdlua.2.so
+1d:7:08 | Loaded system file: /lib/libuser.2.so
+1d:7:08 | Loaded system file: /lib/libgui_txui.1.so
+1d:7:08 | Darwin kernel loaded
+1d:6:10 | Loaded system file: /boot/drivers/mouse.sys
+1d:6:10 | Loaded system file: /lib/libstdlua.2.so
+1d:6:10 | Loaded system file: /lib/libuser.2.so
+1d:6:11 | Loaded system file: /lib/libgui_txui.1.so
+1d:6:11 | Darwin kernel loaded
+1d:7:14 | Downloaded contents of https://pastebin.com/raw/UK4ATXvH
+1d:7:26 | Downloaded contents of https://pastebin.com/raw/V455UuCr
+1d:11:09 | Loaded system file: /boot/drivers/mouse.sys
+1d:11:10 | Loaded system file: /lib/libstdlua.2.so
+1d:11:10 | Loaded system file: /lib/libuser.2.so
+1d:11:10 | Loaded system file: /lib/libgui_txui.1.so
+1d:11:10 | Darwin kernel loaded
+1d:17:24 | Downloaded contents of https://pastebin.com/raw/4UrrFHzS
+1d:18:05 | Downloaded contents of https://pastebin.com/raw/H7uig1Yi
+1d:23:43 | Downloaded contents of https://pastebin.com/raw/SpySi6uB
+2d:3:20 | Downloaded contents of https://pastebin.com/raw/H7uig1Yi
+2d:6:49 | Downloaded contents of https://pastebin.com/raw/DxWtA0LA
+2d:16:13 | Downloaded contents of https://pastebin.com/raw/pFhQka1B
+2d:16:15 | Downloaded contents of https://pastebin.com/raw/fU9Kj9zr
+2d:17:11 | Downloaded contents of https://pastebin.com/raw/qxuTTrPU
+1d:6:08 | Loaded system file: /boot/drivers/mouse.sys
+1d:6:08 | Loaded system file: /lib/libstdlua.2.so
+1d:6:09 | Loaded system file: /lib/libuser.2.so
+1d:6:09 | Loaded system file: /lib/libgui_txui.1.so
+1d:6:09 | Darwin kernel loaded
+1d:14:07 | Downloaded contents of https://pastebin.com/raw/ZT1euz3x
+1d:6:03 | Loaded system file: /boot/drivers/mouse.sys
+1d:6:03 | Loaded system file: /lib/libstdlua.2.so
+1d:6:03 | Loaded system file: /lib/libuser.2.so
+1d:6:04 | Loaded system file: /lib/libgui_txui.1.so
+1d:6:04 | Darwin kernel loaded
+1d:6:24 | Downloaded contents of https://pastebin.com/raw/MtkSVDWH
+1d:6:44 | Downloaded contents of https://pastebin.com/raw/izMaKme5
+1d:8:26 | Loaded system file: /boot/drivers/mouse.sys
+1d:8:26 | Loaded system file: /lib/libstdlua.2.so
+1d:8:27 | Loaded system file: /lib/libuser.2.so
+1d:8:27 | Loaded system file: /lib/libgui_txui.1.so
+1d:8:27 | FAILED TO LOAD KERNEL-MODE ASSEMBLY: /lib/libvfs.1.so
+1d:8:27 | KSTOP CALLED! 0x00000002 KERNEL_ASSEMBLY_NOT_ACCESSIBLE /lib/libvfs.1.so nil nil nil
+1d:17:21 | Loaded system file: /boot/drivers/mouse.sys
+1d:17:22 | Loaded system file: /lib/libstdlua.2.so
+1d:17:22 | Loaded system file: /lib/libuser.2.so
+1d:17:22 | Loaded system file: /lib/libgui_txui.1.so
+1d:19:59 | Loaded system file: /boot/drivers/mouse.sys
+1d:20:00 | Loaded system file: /lib/libstdlua.2.so
+1d:20:00 | Loaded system file: /lib/libuser.2.so
+1d:20:00 | Loaded system file: /lib/libgui_txui.1.so
+1d:20:01 | Loaded system file: /lib/libvfs.1.so
+1d:20:01 | Darwin kernel loaded
+1d:21:14 | Loaded system file: /boot/drivers/mouse.sys
+1d:21:14 | Loaded system file: /lib/libstdlua.2.so
+1d:21:15 | Loaded system file: /lib/libuser.2.so
+1d:21:15 | Loaded system file: /lib/libgui_txui.1.so
+1d:21:15 | Loaded system file: /lib/libvfs.1.so
+1d:21:15 | Darwin kernel loaded
+2d:0:25 | Loaded system file: /boot/drivers/mouse.sys
+2d:1:01 | Loaded system file: /boot/drivers/mouse.sys
+2d:1:01 | Loaded system file: /lib/libstdlua.2.so
+2d:1:01 | Loaded system file: /lib/libuser.2.so
+2d:1:01 | Loaded system file: /lib/libgui_txui.1.so
+2d:1:02 | FAILED TO LOAD KERNEL-MODE ASSEMBLY: /lib/libvfs.1.so
+2d:1:02 | KSTOP CALLED! 0x00000002 KERNEL_ASSEMBLY_NOT_ACCESSIBLE /lib/libvfs.1.so nil nil nil
+2d:2:39 | Loaded system file: /boot/drivers/mouse.sys
+2d:2:39 | Loaded system file: /lib/libstdlua.2.so
+2d:2:40 | Loaded system file: /lib/libuser.2.so
+2d:2:40 | Loaded system file: /lib/libgui_txui.1.so
+2d:2:40 | Darwin kernel loaded
+1d:6:31 | Loaded system file: /boot/drivers/mouse.sys
+1d:6:32 | Loaded system file: /lib/libstdlua.2.so
+1d:6:32 | Loaded system file: /lib/libuser.2.so
+1d:6:32 | Loaded system file: /lib/libgui_txui.1.so
+1d:6:32 | Darwin kernel loaded
+1d:6:51 | Downloaded contents of https://pastebin.com/raw/MFFkEXfD
+1d:6:51 | Loaded system file: /boot/drivers/mouse.sys
+1d:6:51 | Loaded system file: /lib/libstdlua.2.so
+1d:6:52 | Loaded system file: /lib/libuser.2.so
+1d:6:52 | Loaded system file: /lib/libgui_txui.1.so
+1d:6:52 | Darwin kernel loaded
+1d:10:27 | Downloaded contents of https://pastebin.com/raw/XxkBiYJ6
+1d:11:47 | Downloaded contents of https://pastebin.com/raw/NXZy9Tvr
+1d:12:55 | Downloaded contents of https://pastebin.com/raw/P9dDhQ2m
+1d:12:58 | Downloaded contents of http://pastebin.com/raw/zVws7eLq
+1d:13:19 | Downloaded contents of http://pastebin.com/raw/Jn48zZjG
+1d:13:53 | Downloaded contents of http://pastebin.com/raw/XYexT41S
+1d:14:14 | Downloaded contents of http://pastebin.com/raw/LBxiTTeP
+1d:14:39 | Downloaded contents of http://pastebin.com/raw/dPqkFjKq
+1d:15:17 | Downloaded contents of http://pastebin.com/raw/9bXfCz6M
+1d:15:23 | Downloaded contents of https://pastebin.com/raw/3JZHXTGL
+1d:15:35 | Downloaded contents of http://pastebin.com/raw/zVws7eLq
+1d:15:51 | Downloaded contents of http://pastebin.com/raw/4HLxeETG
+1d:21:46 | Downloaded contents of https://pastebin.com/raw/rFUxZUEP
+2d:22:28 | Downloaded contents of https://pastebin.com/raw/nrSC7JcH
+2d:22:56 | Downloaded contents of https://raw.github.com/Sxw1212/ccprograms/master/chrootapi
+2d:22:57 | Downloaded contents of https://raw.github.com/Sxw1212/ccprograms/master/gopher/redirect
+2d:22:57 | Downloaded contents of https://raw.github.com/Sxw1212/ccprograms/master/gopher/goroutine
+2d:22:58 | Downloaded contents of https://raw.github.com/Sxw1212/ccprograms/master/ccboxupd
+3d:2:11 | Downloaded contents of https://pastebin.com/raw/Ef4SdA3k
+1d:6:08 | Loaded system file: /boot/drivers/mouse.sys
+1d:6:08 | Loaded system file: /lib/libstdlua.2.so
+1d:6:08 | Loaded system file: /lib/libuser.2.so
+1d:6:09 | Loaded system file: /lib/libgui_txui.1.so
+1d:6:09 | Darwin kernel loaded
+2d:1:40 | Downloaded contents of https://pastebin.com/raw/dJd0B0V8
+3d:5:38 | Loaded system file: /boot/drivers/mouse.sys
+3d:5:38 | Loaded system file: /lib/libstdlua.2.so
+3d:5:39 | Loaded system file: /lib/libuser.2.so
+3d:5:39 | Loaded system file: /lib/libgui_txui.1.so
+3d:5:39 | Darwin kernel loaded
+3d:6:22 | Attempt to access system files!
+3d:6:22 | Superuser access verified.
+3d:6:30 | Attempt to access system files!
+3d:6:30 | Superuser access verified.
+1d:6:03 | Loaded system file: /boot/drivers/mouse.sys
+1d:6:04 | Loaded system file: /lib/libstdlua.2.so
+1d:6:04 | Loaded system file: /lib/libuser.2.so
+1d:6:04 | Loaded system file: /lib/libgui_txui.1.so
+1d:6:04 | Darwin kernel loaded
+1d:8:27 | Loaded system file: /boot/drivers/mouse.sys
+1d:8:27 | Loaded system file: /lib/libstdlua.2.so
+1d:8:27 | Loaded system file: /lib/libuser.2.so
+1d:8:28 | Loaded system file: /lib/libgui_txui.1.so
+1d:8:28 | Darwin kernel loaded
+1d:12:20 | Loaded system file: /boot/drivers/mouse.sys
+1d:12:20 | Loaded system file: /lib/libstdlua.2.so
+1d:12:21 | Loaded system file: /lib/libuser.2.so
+1d:12:21 | Loaded system file: /lib/libgui_txui.1.so
+1d:12:21 | Darwin kernel loaded
+2d:21:03 | Loaded system file: /boot/drivers/mouse.sys
+2d:21:03 | Loaded system file: /lib/libstdlua.2.so
+2d:21:03 | Loaded system file: /lib/libuser.2.so
+2d:21:03 | Loaded system file: /lib/libgui_txui.1.so
+2d:21:03 | Darwin kernel loaded
+2d:21:14 | Loaded system file: /boot/drivers/mouse.sys
+2d:21:14 | Loaded system file: /lib/libstdlua.2.so
+2d:21:15 | Loaded system file: /lib/libuser.2.so
+2d:21:15 | Loaded system file: /lib/libgui_txui.1.so
+2d:21:15 | Darwin kernel loaded
+3d:0:28 | Loaded system file: /boot/drivers/mouse.sys
+3d:0:28 | Loaded system file: /lib/libstdlua.2.so
+3d:0:28 | Loaded system file: /lib/libuser.2.so
+3d:0:28 | Loaded system file: /lib/libgui_txui.1.so
+3d:0:28 | Darwin kernel loaded
+3d:8:19 | Loaded system file: /boot/drivers/mouse.sys
+3d:8:19 | Loaded system file: /lib/libstdlua.2.so
+3d:8:19 | Loaded system file: /lib/libuser.2.so
+3d:8:20 | Loaded system file: /lib/libgui_txui.1.so
+3d:8:20 | Darwin kernel loaded
+1d:6:56 | Loaded system file: /boot/drivers/mouse.sys
+1d:6:56 | Loaded system file: /lib/libstdlua.2.so
+1d:6:56 | Loaded system file: /lib/libuser.2.so
+1d:6:57 | Loaded system file: /lib/libgui_txui.1.so
+1d:6:57 | Darwin kernel loaded
+1d:11:01 | Loaded system file: /boot/drivers/mouse.sys
+1d:11:01 | Loaded system file: /lib/libstdlua.2.so
+1d:11:01 | Loaded system file: /lib/libuser.2.so
+1d:11:02 | Loaded system file: /lib/libgui_txui.1.so
+1d:11:02 | Darwin kernel loaded
+1d:6:04 | Loaded system file: /boot/drivers/mouse.sys
+1d:6:04 | Loaded system file: /lib/libstdlua.2.so
+1d:6:05 | Loaded system file: /lib/libuser.2.so
+1d:6:05 | Loaded system file: /lib/libgui_txui.1.so
+1d:6:05 | Darwin kernel loaded
+1d:6:02 | Loaded system file: /boot/drivers/mouse.sys
+1d:6:03 | Loaded system file: /lib/libstdlua.2.so
+1d:6:03 | Loaded system file: /lib/libuser.2.so
+1d:6:03 | Loaded system file: /lib/libgui_txui.1.so
+1d:6:03 | Darwin kernel loaded
+1d:7:21 | Loaded system file: /boot/drivers/mouse.sys
+1d:7:21 | Loaded system file: /lib/libstdlua.2.so
+1d:7:22 | Loaded system file: /lib/libuser.2.so
+1d:7:23 | Loaded system file: /lib/libgui_txui.1.so
+1d:7:23 | Darwin kernel loaded
+1d:6:08 | Loaded system file: /boot/drivers/mouse.sys
+1d:6:08 | Loaded system file: /lib/libstdlua.2.so
+1d:6:09 | Loaded system file: /lib/libuser.2.so
+1d:6:09 | Loaded system file: /lib/libgui_txui.1.so
+1d:6:09 | Darwin kernel loaded
+1d:8:05 | Loaded system file: /boot/drivers/mouse.sys
+1d:8:05 | Loaded system file: /lib/libstdlua.2.so
+1d:8:05 | Loaded system file: /lib/libuser.2.so
+1d:8:06 | Loaded system file: /lib/libgui_txui.1.so
+1d:8:06 | Darwin kernel loaded
+1d:10:20 | Loaded system file: /boot/drivers/mouse.sys
+1d:10:20 | Loaded system file: /lib/libstdlua.2.so
+1d:10:21 | Loaded system file: /lib/libuser.2.so
+1d:10:21 | Loaded system file: /lib/libgui_txui.1.so
+1d:10:21 | Darwin kernel loaded
+1d:20:16 | Loaded system file: /boot/drivers/mouse.sys
+1d:20:16 | Loaded system file: /lib/libstdlua.2.so
+1d:20:17 | Loaded system file: /lib/libuser.2.so
+1d:20:17 | Loaded system file: /lib/libgui_txui.1.so
+1d:20:17 | Darwin kernel loaded
+2d:1:20 | Attempt to access system files!
+2d:1:20 | Superuser access verified.
+2d:18:26 | Loaded system file: /boot/drivers/mouse.sys
+2d:18:26 | Loaded system file: /lib/libstdlua.2.so
+2d:18:26 | Loaded system file: /lib/libuser.2.so
+2d:18:26 | Loaded system file: /lib/libgui_txui.1.so
+2d:18:26 | Darwin kernel loaded
+1d:6:04 | Loaded system file: /boot/drivers/mouse.sys
+1d:6:05 | Loaded system file: /lib/libstdlua.2.so
+1d:6:05 | Loaded system file: /lib/libuser.2.so
+1d:6:06 | Loaded system file: /lib/libgui_txui.1.so
+1d:6:06 | Darwin kernel loaded
+1d:15:03 | Loaded system file: /boot/drivers/mouse.sys
+1d:15:04 | Loaded system file: /lib/libstdlua.2.so
+1d:15:04 | Loaded system file: /lib/libuser.2.so
+1d:15:04 | Loaded system file: /lib/libgui_txui.1.so
+1d:15:04 | Darwin kernel loaded
+4d:2:34 | Loaded system file: /boot/drivers/mouse.sys
+4d:2:34 | Loaded system file: /lib/libstdlua.2.so
+4d:2:34 | Loaded system file: /lib/libuser.2.so
+4d:2:35 | Loaded system file: /lib/libgui_txui.1.so
+4d:2:35 | Darwin kernel loaded
+8d:19:10 | Downloaded contents of https://pastebin.com/raw/sULc26Yp
+8d:19:24 | Downloaded contents of https://pastebin.com/raw/sULc26Yp
+10d:6:37 | Loaded system file: /boot/drivers/mouse.sys
+10d:6:37 | Loaded system file: /lib/libstdlua.2.so
+10d:6:38 | Loaded system file: /lib/libuser.2.so
+10d:6:38 | Loaded system file: /lib/libgui_txui.1.so
+10d:6:38 | Darwin kernel loaded
+1d:6:28 | FAILED TO LOAD KERNEL-MODE ASSEMBLY: /boot/ext/mouse.kext
+1d:6:28 | KSTOP CALLED! 0x00000002 KERNEL_ASSEMBLY_NOT_ACCESSIBLE /boot/ext/mouse.kext nil nil nil
+1d:20:37 | Loaded system file: /boot/ext/mouse.kext
+1d:20:38 | Loaded system file: /lib/libstdlua.2.so
+1d:20:38 | Loaded system file: /lib/libuser.2.so
+1d:20:38 | Loaded system file: /lib/libgui_txui.1.so
+1d:20:38 | Darwin kernel loaded
+5d:11:06 | Loaded system file: /boot/ext/mouse.kext
+5d:11:07 | Loaded system file: /lib/libstdlua.2.so
+5d:11:07 | Loaded system file: /lib/libuser.2.so
+5d:11:07 | Loaded system file: /lib/libgui_txui.1.so
+5d:11:07 | Darwin kernel loaded
+1d:6:20 | Loaded system file: /boot/ext/mouse.kext
+1d:6:21 | Loaded system file: /lib/libstdlua.2.so
+1d:6:21 | Loaded system file: /lib/libuser.2.so
+1d:6:22 | Loaded system file: /lib/libgui_txui.1.so
+1d:6:22 | Darwin kernel loaded
+2d:13:40 | Downloaded contents of https://pastebin.com/raw/wcPNMw0Y
+1d:16:18 | Loaded system file: /boot/ext/mouse.kext
+1d:16:19 | Loaded system file: /lib/libstdlua.2.so
+1d:16:19 | Loaded system file: /lib/libuser.2.so
+1d:16:19 | Loaded system file: /lib/libgui_txui.1.so
+1d:16:19 | Darwin kernel loaded
+1d:6:52 | Loaded system file: /boot/ext/mouse.kext
+1d:6:52 | Loaded system file: /lib/libstdlua.2.so
+1d:6:53 | Loaded system file: /lib/libuser.2.so
+1d:6:53 | Loaded system file: /lib/libgui_txui.1.so
+1d:6:53 | Darwin kernel loaded
+3d:6:26 | Loaded system file: /boot/ext/mouse.kext
+3d:6:27 | Loaded system file: /lib/libstdlua.2.so
+3d:6:27 | Loaded system file: /lib/libuser.2.so
+3d:6:27 | Loaded system file: /lib/libgui_txui.1.so
+3d:6:27 | Darwin kernel loaded

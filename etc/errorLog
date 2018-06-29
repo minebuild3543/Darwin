@@ -1,0 +1,14 @@
+4d:6:51 | Arguments required (tpm [flags] <mode> [modeArguments]). See `tpm help` for more information
+4d:7:35 | Cannot list packages - no packages installed
+4d:8:01 | Could not find package 'titanium'. Use `tpm fetch` to update package listings.
+4d:19:09 | File not found
+4d:20:30 | File not found
+4d:22:18 | Path example/ui/master.tml cannot be found
+1d:7:13 | Path example/ui/master.tml cannot be found
+1d:7:59 | [Instance] Thread (4a14ff6a) coroutine exception: main.lua:248: attempt to call nil
+1d:10:08 | [Instance] Thread (21b539f8) coroutine exception: main.lua:248: attempt to call nil
+1d:10:53 | [Instance] Thread (62260d29) coroutine exception: main.lua:248: attempt to call nil
+1d:10:59 | [Instance] Thread (56f87615) coroutine exception: main.lua:248: attempt to call nil
+1d:13:56 | [Instance] Thread (6ac700d2) coroutine exception: main.lua:248: attempt to call nil
+2d:6:01 | Terminated
+2d:6:01 | Terminated

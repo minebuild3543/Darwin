@@ -1,0 +1,3 @@
+local x, y = term.getSize()
+UI.outputInfo("tty", "terminal object size is "..tostring(x).."x"..tostring(y))
+

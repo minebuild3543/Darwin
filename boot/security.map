@@ -1,0 +1,68 @@
+local oldReadOnly = _G["fs"]["isReadOnly"]
+local oldMove = _G["fs"]["move"]
+local oldDelete = _G["fs"]["delete"]
+local oldHttpGet = _G["http"]["get"]
+local oldError = _G["error"]
+_G["fs"]["isReadOnly"] = function(path)
+ local find1 = shell.resolve(path)
+ if string.find(find1, "boot") or string.find(find1, "system") then
+  log("Attempt to access system files!")
+  if  __DEBUG then
+   log("Superuser access verified.")
+   return false
+  else
+   log("Attempt blocked.")
+   return true
+  end
+ elseif find1 == "startup" or find1 == "/startup" then
+  log("Attempt to access bootloader!")
+  log("Attempt blocked.")
+  return true
+ end 
+ return oldReadOnly(path)
+end
+_G["fs"]["move"] = function(path1, path2)
+ local find2 = shell.resolve(path1)
+ if string.find(find2, "boot") or string.find(find2, "system") then
+  log("Attempt to access system files!")
+  if  __DEBUG then
+   log("Superuser access verified.")
+  else
+   log("Attempt blocked.")
+   return nil
+  end
+ elseif find2 == "startup" or find2 == "/startup" then
+  log("Attempt to access boot loader!")
+  log("Attempt blocked.")
+  return nil
+ end 
+ return oldMove(path1, path2)
+end
+_G["fs"]["delete"] = function(path)
+ local find3 = shell.resolve(path)
+ if string.find(find3, "boot") or string.find(find3, "system") then
+  log("Attempt to access system files!")
+  if  __DEBUG then
+   log("Superuser access verified.")
+  else
+   log("Attempt blocked.")
+   return nil
+  end
+ elseif find3 == "startup" or find3 == "/startup" then
+  log("Attempt to access bootloader!")
+  log("Attempt blocked.")
+  return nil
+ end 
+ return oldDelete(path)
+end
+_G["http"]["get"] = function(url, headers)
+ log("Downloaded contents of "..url)
+ return oldHttpGet(url, headers)
+end
+--_G["error"] = function(text, lvl)
+-- local x = lvl or 2
+-- local logger = fs.open("/etc/errorLog", "a")
+-- logger.writeLine(tostring(os.day()).."d:"..textutils.formatTime(os.time(), true).." | "..text)
+-- logger.close()
+-- oldError(text, x or 1)
+--end

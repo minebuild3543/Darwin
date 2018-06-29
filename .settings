@@ -1,0 +1,13 @@
+{
+  [ "edit.default_extension" ] = "",
+  [ "edit.use_syntax_highlight" ] = true,
+  [ "paint.default_extension" ] = "img",
+  [ "kernel.reboot_on_bug_check" ] = false,
+  [ "shell.autocomplete" ] = false,
+  [ "list.show_hidden" ] = false,
+  [ "shell.allow_disk_startup" ] = false,
+  [ "shell.allow_startup" ] = true,
+  [ "bios.use_multishell" ] = true,
+  [ "lua.autocomplete" ] = false,
+  [ "edit.autocomplete" ] = false,
+}

@@ -1,0 +1,43 @@
+function minimenu( ... )
+	local tArgs = { ... }
+	local tSelections = {}
+	local _, y = term.getSize()
+	local n = 1
+	for i, str in ipairs( tArgs ) do
+		tSelections[ i ] = { str = str }
+		tSelections[ i ][ "x1" ] = n
+		tSelections[ i ][ "x2" ] = n + #str + 1
+		n = n + 2 + #str
+	end
+	for k, v in ipairs( tSelections ) do
+		term.setCursorPos( v["x1"], y )
+		term.write( ' ' .. v.str )
+	end
+	local slc = 1
+	local last = 1
+	while true do
+		term.setCursorPos( tSelections[ last ]["x1"], y )
+		term.write( ' ' )
+		term.setCursorPos( tSelections[ last ]["x2"], y )
+		term.write( ' ' )
+		term.setCursorPos( tSelections[ slc ]["x1"], y )
+		term.setTextColor( term.isColor() and colors.yellow or colors.white )
+		term.write( "[" )
+		term.setCursorPos( tSelections[ slc ]["x2"], y )
+		term.write( "]" )
+		while true do
+			local event, key = os.pullEvent( "key" )
+			if key == 203 and tSelections[ slc - 1 ] then
+				last = slc
+				slc = slc - 1
+				break
+			elseif key == 205 and tSelections[ slc + 1 ] then
+				last = slc
+				slc = slc + 1
+				break
+			elseif key == 28 then
+				return tSelections[ slc ].str
+			end
+		end
+	end
+end

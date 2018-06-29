@@ -1,0 +1,112 @@
+local playerEvents = {
+  "key", "char", "mouse_click", "mouse_drag", "mouse_up"
+}
+local running = true
+local program = "rom/programs/shell.lua"
+local split = "vertical"
+local args = {...}
+if args[1] then
+  if args[1] == "1" then args[1] = "horizontal" end
+  if args[1] == "2" then args[1] = "vertical" end
+  split = args[1]
+  if args[2] then
+    program = args[2]
+    if args[3] then
+      for i = 3, #args do
+        program = program.." "..args[i]
+      end
+    end
+  end
+end
+
+local width, height = term.getSize()
+local halfwidth = math.floor(width/2)
+local halfheight = math.floor(height/2)
+local splits = {
+  vertical = {
+    window1 = window.create(term.current(), 1, 1, halfwidth-1, height),
+    window2 = window.create(term.current(), halfwidth+1, 1, halfwidth+1, height)
+  },
+  horizontal = {
+    window1 = window.create(term.current(), 1, 1, width, halfheight),
+    window2 = window.create(term.current(), 1, halfheight+1, width, halfheight+1)
+  }
+}
+local cx, cy
+local selected = 1
+
+local co1 = coroutine.create(function()
+  shell.run("rom/programs/shell.lua")
+end)
+
+local co2 = coroutine.create(function()
+  shell.run(program)
+end)
+
+local resumeProgram = function(co, window, eventData, num)
+  if coroutine.status(co) == "dead" then
+    running = false
+  end
+  local window = splits[split][window]
+  local oldTerm = term.redirect(window)
+  local x, y = window.getPosition()
+  if string.sub(eventData[1], 1, #"mouse") == "mouse" then
+    eventData[3] = eventData[3]-x+1
+    eventData[4] = eventData[4]-y+1
+  end
+  local isPlayerEvent = false
+  for i = 1, #playerEvents do
+    if playerEvents[i] == eventData[1] then isPlayerEvent = true end
+  end
+  if selected == num then
+    coroutine.resume(co, table.unpack(eventData))
+    local wcx, wcy = term.getCursorPos()
+    cx, cy = wcx+x-1, wcy+y-1
+  elseif not isPlayerEvent then
+    coroutine.resume(co, table.unpack(eventData))
+  else
+    coroutine.resume(co, "")
+  end
+  term.redirect(oldTerm)
+end
+
+local isTermClicked = function(mx, my, te)
+  local x, y = te.getPosition()
+  local w, h = te.getSize()
+  if mx>=x and my>y then
+    if mx<x+w and my<y+h then
+      return true
+    end
+  end
+end
+
+while running do
+  local timer = os.startTimer(0.1)
+  local eventData = {os.pullEventRaw()}
+  os.cancelTimer(timer)
+
+  if eventData[1] == "mouse_click" then
+    local mx, my = eventData[3], eventData[4]
+    if isTermClicked(mx, my, splits[split]["window1"]) then
+      selected = 1
+    elseif isTermClicked(mx, my, splits[split]["window2"]) then
+      selected = 2
+    end
+  end
+
+  resumeProgram(co1, "window1", eventData, 1)
+  resumeProgram(co2, "window2", eventData, 2)
+
+  if split == "vertical" then
+    paintutils.drawLine(halfwidth, 1, halfwidth, height, colors.lightGray)
+  else
+    paintutils.drawLine(1, halfheight, width, halfheight, colors.lightGray)
+  end
+  if cx and cy then
+    term.setCursorPos(cx, cy)
+  end
+end
+
+term.setBackgroundColour(colors.black)
+term.clear()
+term.setCursorPos(1, 1)

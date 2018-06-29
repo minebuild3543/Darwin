@@ -1,0 +1,27 @@
+local tArgs = {...}
+local err = true
+local function findArg(arg)
+ for _,v in ipairs(tArgs) do
+  if v == arg then
+   return true
+  end
+ end
+ return false
+end
+
+if findArg("--os-version") then
+ err = false
+ UI.outputInfo("systeminfo", os.version())
+end
+if findArg("--shell-path") then
+ err = false
+ UI.outputInfo("systeminfo", shell.path())
+end
+if findArg("--computer-info") then
+ err = false
+ UI.outputInfo("systeminfo", "ID "..os.getComputerID())
+ UI.outputInfo("systeminfo", "Computer labeled as "..os.getComputerLabel())
+end
+if #tArgs < 1 or err then
+ UI.outputInfo("systeminfo", "arguments not specified")
+end

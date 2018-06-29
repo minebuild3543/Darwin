@@ -1,0 +1,1 @@
+UI.outputInfo("net", "hostname is "..os.getComputerLabel() or tostring(os.getComputerID()))
